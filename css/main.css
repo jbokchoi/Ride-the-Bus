@@ -9,6 +9,10 @@ html, body {
     margin: 0;
 }
 
+section {
+    background-color: mediumseagreen;
+}
+
 .centered-wrapper {
     position: relative;
     text-align: center;
@@ -28,6 +32,7 @@ html, body {
     display: inline-block;
     vertical-align: middle;
     border: 1px solid black;
+    margin: 5vmin;
 }
 
 .game {
@@ -57,22 +62,64 @@ button, #beverages, #playing-deck {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 2em;
 }
 
-#instructions {
-    grid-area: message;
+div > #instructions {
     display: flex;
-    justify-content: center;
+    grid-area: message;
     align-items: center;
+    justify-content: space-around;
 }
 
-#start-game {
+#d-score, #c-score {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arimo', sans-serif;
+}
+
+#d-score > h2, #c-score > h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#d-score > img {
+    height: 20vmin;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+#same {
     grid-area: buttons2;
     border: 1px solid grey;
     text-align: center;
     font-size: 16px;  
     background-color: green;
     border-radius: 12px;
+    font-family: 'Arimo', sans-serif;
+}
+
+#higher {
+    grid-area: buttons1;
+    border: 1px solid grey;
+    text-align: center;
+    font-size: 16px;  
+    background-color: green;
+    border-radius: 12px;
+    font-family: 'Arimo', sans-serif;
+}
+
+#lower {
+    grid-area: buttons3;
+    border: 1px solid grey;
+    text-align: center;
+    font-size: 16px;  
+    background-color: green;
+    border-radius: 12px;
+    font-family: 'Arimo', sans-serif;
 }
 
 #beverages {

@@ -1,6 +1,34 @@
 /*----- constants -----*/ 
 
 /*----- app's state (variables) -----*/ 
+let winner, scores, results;
+
+burntDeck=[];
+
+let Drinks = {
+    empty: 'images/drinksImages/empty.png',
+    quarter: 'images/drinksImages/quarter.png',
+    half: 'images/drinksImages/half.png',
+    threeQuarters: 'images/drinksImages/threeQuarters.png',
+    full: 'images/drinksImages/full.png',
+}
+
+let cardBack = "../images/backs/blue.svg",
+/*----- cached element references -----*/ 
+const cardBackEl = document.querySelector('#beverages > #drink0')
+const drinksScoreEl = document.querySelector
+const cardsLeftEl=
+
+nOfDrinks
+nOfCardsLeft
+
+
+/*----- event listeners -----*/ 
+
+/*----- functions -----*/
+
+start ();
+
 cardDeck = [
     'D1','H1','S1','C1',
     'D2','H2','S2','C2',
@@ -11,16 +39,46 @@ cardDeck = [
     'D7','H7','S7','C7',
     'D8','H8','S8','C8',
     'D9','H9','S9','C9',
-
-    1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13,J,J];
-
-/*----- cached element references -----*/ 
-
-/*----- event listeners -----*/ 
-
-/*----- functions -----*/
-
-//  function start () {
+    'D10','H10','S10','C10',
+    'D11','H11','S11','C11',
+    'D12','H12','S12','C12',   
+    'D13','H13','S13','C13',
+    'J', 'J'];
 
 
-//  }
+function shuffle() {
+var j, x, i;
+    for (i = cardDeck.length -1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i+1));
+        x = cardDeck[i];
+        cardDeck[i] = cardDeck[j];
+        cardDeck[j] = x;
+    }
+    return cardDeck;
+};
+
+shuffle();
+var playingDeck = cardDeck.splice(0, 6);
+   
+function render() {
+//render the results
+
+
+}
+
+function start() {
+    winner = null;
+    results = {
+        cards: 'playingDeck',
+        drinks: 'drinks',
+    }
+    board = {
+        drinks: ['empty', 'empty', 'empty', 'empty', 'empty'],
+        cards: 'cardBack',
+    }
+    scores = {
+        nOfDrinks: 0,
+        nOfCardsLeft: (cardDeck.length + 1) - 1,
+    }
+    render ();
+}

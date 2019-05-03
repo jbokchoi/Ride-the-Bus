@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ride the Bus</title>
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Merriweather+Sans:700,800" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/cardDeck.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script defer src="js/main.js"></script>
 </head>
@@ -13,11 +15,19 @@
     <section class = "centered-content">
         <div class = "game">
     
-            <header id = "main-title">Main Title</header>
-            <div id = "instructions">Player Message</div>
-            <button id = "start-game">Start Game</button>
-            <!-- <button id = "higher">Higher</button>
-            <button id = "lower">Lower</button> -->
+            <header id = "main-title">ride the bus</header>
+            <div id = "instructions">
+                <div id = "d-score">drinks score
+                    <h2>0</h2>
+                </div>
+                <div id = "c-score">cards score
+                    <h2>0</h2>
+                </div>
+            </div>
+            <!-- <button id = "start-game">Start Game</button> -->
+            <button id = "higher">Higher</button>
+            <button id = "same">Same</button>
+            <button id = "lower">Lower</button>
             <div id = "beverages">
                 <div id = "drink0">drink1</div>
                 <div id = "drink1">drink2</div>

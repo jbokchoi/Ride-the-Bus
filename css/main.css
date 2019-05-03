@@ -1,0 +1,95 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.centered-wrapper {
+    position: relative;
+    text-align: center;
+    height: 100vh;
+}
+
+.centered-wrapper:before {
+    content:"";
+    position: relative;
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.centered-content {
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid black;
+}
+
+.game {
+    width: 75vw;
+    height: 100vh;
+    display: grid;
+    align-content: center;
+    grid-template-columns: 150px auto 150 px;
+    grid-template-rows: 1fr 1fr 0.5fr 1fr 1fr;
+    grid-gap: 2px;
+    grid-template-areas:
+        "title title title"
+        "message message message"
+        "buttons1 buttons2 buttons3"
+        "drinks drinks drinks "
+        "cards cards cards";
+}
+
+button, #beverages, #playing-deck {
+    background: #eaeaea;
+    padding: 1em;
+    margin: 0.5em;
+}
+
+#main-title {
+    grid-area: title;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#instructions {
+    grid-area: message;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-game {
+    grid-area: buttons2;
+    border: 1px solid grey;
+    text-align: center;
+    font-size: 16px;  
+    background-color: green;
+    border-radius: 12px;
+}
+
+#beverages {
+    grid-area: drinks;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+#playing-deck {
+    grid-area: cards;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+[id*="ink"], [id^="card"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+}

@@ -5,29 +5,59 @@ let winner, scores, results;
 
 burntDeck=[];
 
-let Drinks = {
-    empty: 'images/drinksImages/empty.png',
-    quarter: 'images/drinksImages/quarter.png',
-    half: 'images/drinksImages/half.png',
-    threeQuarters: 'images/drinksImages/threeQuarters.png',
-    full: 'images/drinksImages/full.png',
+let drinks = {
+    0: {
+        img:'images/drinksImages/empty.png'
+    },
+    1: {
+        img: 'images/drinksImages/quarter.png'
+    },
+    2: {
+        img: 'images/drinksImages/half.png'
+    },
+    2: {
+        img: 'images/drinksImages/threeQuarters.png'
+    },
+    4: {
+        img: 'images/drinksImages/full.png'
+    },
 }
 
-let cardBack = "../images/backs/blue.svg",
-/*----- cached element references -----*/ 
-const cardBackEl = document.querySelector('#beverages > #drink0')
-const drinksScoreEl = document.querySelector
-const cardsLeftEl=
+let cardBack = {
+    img: "../images/backs/blue.svg"
+};
 
-nOfDrinks
-nOfCardsLeft
+/*----- cached element references -----*/ 
+const cardBackEl = document.querySelector('#playing-deck > #card0')
+const drinksScoreEl = document.querySelector('#beverages > #drink0')
+// const cardsLeftEl= document.querySelector('#c-score > h2')
+// const 
+// nOfDrinks
+// nOfCardsLeft
+
 
 
 /*----- event listeners -----*/ 
+// document.querySelector('#higher').addEventListener('click', handleHigher);
+// document.querySelector('#same').addEventListener('click', handleSame);
+// document.querySelector('#lower').addEventListener('click', handleLower);
+
 
 /*----- functions -----*/
 
-start ();
+start();
+
+// function handleHigher(){
+
+// }
+
+// function handleSame(){
+
+// }
+
+// function handleLower(){
+
+// }
 
 cardDeck = [
     'D1','H1','S1','C1',
@@ -47,38 +77,55 @@ cardDeck = [
 
 
 function shuffle() {
-var j, x, i;
-    for (i = cardDeck.length -1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i+1));
-        x = cardDeck[i];
-        cardDeck[i] = cardDeck[j];
-        cardDeck[j] = x;
+    var shuffledDeck = cardDeck.length;
+    var index, temp;
+    while (shuffledDeck > 0) {
+        index = Math.floor(Math.random() * shuffledDeck);
+        shuffledDeck --;
+        temp = cardDeck[shuffledDeck];
+        cardDeck[shuffledDeck] = cardDeck[index];
+        cardDeck[index] = temp;
     }
     return cardDeck;
 };
 
 shuffle();
 var playingDeck = cardDeck.splice(0, 6);
-   
-function render() {
-//render the results
 
+// function resetBoard()
+
+// playingDeck = 
+// //  if (`${}` = true;
+// //  acc = i++
+// //  else resetBoard()
+
+
+
+
+function render() {
+// //render the results
+drinksScoreEl.style.backgroundImage = `url(${drinks[board.drinks].img})`;
+cardBackEl.style.backgroundImage = `url(${cardBack[board.cards].img})`;
 
 }
 
 function start() {
     winner = null;
-    results = {
+    results = { 
         cards: 'playingDeck',
         drinks: 'drinks',
     }
     board = {
-        drinks: ['empty', 'empty', 'empty', 'empty', 'empty'],
-        cards: 'cardBack',
+        drinks: [0, 0, 0, 0, 0],
+        cards: [null, null, null, null, null, null],
     }
-    scores = {
-        nOfDrinks: 0,
-        nOfCardsLeft: (cardDeck.length + 1) - 1,
-    }
+    // scores = {
+    //     nOfDrinks: 0,
+    //     nOfCardsLeft: (cardDeck.length + 1) - 1,
+    // }
     render ();
 }
+
+
+
+

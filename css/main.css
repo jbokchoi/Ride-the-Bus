@@ -3,14 +3,12 @@
 }
 
 html, body {
-    width: 100vw;
-    height: 100vh;
+    width: 100vmax;
+    height: 100vmax;
     padding: 0;
     margin: 0;
-}
+    background-color: #222222;
 
-section {
-    background-color: mediumseagreen;
 }
 
 .centered-wrapper {
@@ -24,24 +22,24 @@ section {
     position: relative;
     display: inline-block;
     width: 0;
-    height: 100%;
+    height: 100vmin;
     vertical-align: middle;
 }
 
 .centered-content {
     display: inline-block;
     vertical-align: middle;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 5vmin;
 }
 
 .game {
-    width: 75vw;
-    height: 100vh;
+    min-width: 600px;
+    min-height: 600px;
     display: grid;
     align-content: center;
-    grid-template-columns: 150px auto 150 px;
-    grid-template-rows: 1fr 1fr 0.5fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.7fr 0.7fr 0.5fr 1.5fr 1.5fr;
     grid-gap: 2px;
     grid-template-areas:
         "title title title"
@@ -51,19 +49,27 @@ section {
         "cards cards cards";
 }
 
-button, #beverages, #playing-deck {
-    background: #eaeaea;
-    padding: 1em;
-    margin: 0.5em;
-}
-
-#main-title {
+.glow {
     grid-area: title;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Merriweather Sans', sans-serif;
-    font-size: 2em;
+    font-family: 'Monoton', cursive;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+      
+    @-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
 }
 
 div > #instructions {
@@ -71,18 +77,25 @@ div > #instructions {
     grid-area: message;
     align-items: center;
     justify-content: space-around;
+    font-family: 'Merriweather Sans', sans-serif;
+    margin-top: 3vmin;
 }
 
 #d-score, #c-score {
     display: flex;
     flex-direction: column;
-    font-family: 'Arimo', sans-serif;
+    font-family: 'Merriweather Sans', sans-serif;
+    color: white;
+    font-weight: 800;
 }
 
 #d-score > h2, #c-score > h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Merriweather Sans', sans-serif;
+    color: white;
+    font-weight: 800;
 }
 
 #d-score > img {
@@ -92,40 +105,42 @@ div > #instructions {
 
 }
 
+#same, #higher, #lower {
+    text-align: center;
+    font-size: 100%;  
+    background-color: #e60073;
+    border-radius: 4px;
+    font-family: 'Arimo', sans-serif;
+    width: 75%;
+    justify-self: center;
+    margin: 2%;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
 #same {
     grid-area: buttons2;
-    border: 1px solid grey;
-    text-align: center;
-    font-size: 16px;  
-    background-color: green;
-    border-radius: 12px;
-    font-family: 'Arimo', sans-serif;
+
 }
 
 #higher {
     grid-area: buttons1;
-    border: 1px solid grey;
-    text-align: center;
-    font-size: 16px;  
-    background-color: green;
-    border-radius: 12px;
-    font-family: 'Arimo', sans-serif;
+
 }
 
 #lower {
     grid-area: buttons3;
-    border: 1px solid grey;
-    text-align: center;
-    font-size: 16px;  
-    background-color: green;
-    border-radius: 12px;
-    font-family: 'Arimo', sans-serif;
 }
 
 #beverages {
     grid-area: drinks;
     display: grid;
+    width: 80%;
+    justify-self: center;
+    
     grid-template-columns: repeat(5, 1fr);
+
 }
 
 #playing-deck {
@@ -137,6 +152,9 @@ div > #instructions {
 [id*="ink"], [id^="card"] {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;  
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
     border: 1px solid grey;
 }

@@ -8,8 +8,10 @@
     <link href="https://fonts.googleapis.com/css?family=Arimo|Merriweather+Sans|Monoton" rel="stylesheet">    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/cardDeck.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script defer src="js/main.js"></script>
+    <script defer src="js/cards.js"></script>
+    <!-- <script defer src="js/main.js"></script> -->
 </head>
+
 <body class = "centered-wrapper">
     <section class = "centered-content">
         <div class = "game">
@@ -26,28 +28,20 @@
             </div>
 
             <!-- <button id = "start-game">Start Game</button> -->
-            <button id = "higher">HIGHER</button>
-            <button id = "same">SAME</button>
-            <button id = "lower">LOWER</button>
+            <button id = "higher" data-action="high">HIGHER</button>
+            <button id = "same" data-action="same">SAME</button>
+            <button id = "lower" data-action="low">LOWER</button>
             
             <div id = "beverages">
-                <div id = "drink0">drink1</div>
-                <div id = "drink1">drink2</div>
-                <div id = "drink2">drink3</div>
-                <div id = "drink3">drink4</div>
-                <div id = "drink4">drink5</div>
+                
             </div>
             
             <div id = "playing-deck">
-                <div id = "card0">card1</div>
-                <div id = "card1">card2</div>
-                <div id = "card2">card3</div>
-                <div id = "card3">card4</div>
-                <div id = "card4">card5</div>
-                <div id = "card5">card6</div>
+                
             </div>
         
         </div>
     </section>
 </body>
 </html>
+

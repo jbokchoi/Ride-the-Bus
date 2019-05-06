@@ -24,7 +24,7 @@ let drinks = {
 }
 
 let cardBack = {
-    img: "../images/backs/blue.svg"
+    img: "images/backs/blue.svg"
 };
 
 /*----- cached element references -----*/ 
@@ -59,23 +59,14 @@ start();
 
 // }
 
-cardDeck = [
-    'D1','H1','S1','C1',
-    'D2','H2','S2','C2',
-    'D3','H3','S3','C3',
-    'D4','H4','S4','C4',
-    'D5','H5','S5','C5',
-    'D6','H6','S6','C6',
-    'D7','H7','S7','C7',
-    'D8','H8','S8','C8',
-    'D9','H9','S9','C9',
-    'D10','H10','S10','C10',
-    'D11','H11','S11','C11',
-    'D12','H12','S12','C12',   
-    'D13','H13','S13','C13',
-    'J', 'J'];
 
 
+cardDeck =  [ 
+    'D1','H1','S1','C1','D2','H2','S2','C2','D3','H3','S3','C3','D4','H4','S4','C4',
+    'D5','H5','S5','C5','D6','H6','S6','C6','D7','H7','S7','C7','D8','H8','S8','C8',
+    'D9','H9','S9','C9','D10','H10','S10','C10','D11','H11','S11','C11',
+    'D12','H12','S12','C12','D13','H13','S13','C13',];
+    
 function shuffle() {
     var shuffledDeck = cardDeck.length;
     var index, temp;
@@ -92,20 +83,47 @@ function shuffle() {
 shuffle();
 var playingDeck = cardDeck.splice(0, 6);
 
-// function resetBoard()
+// function compare(value){
+//     var cardA = playingDeck.length - 2,
+//     var cardB = playingDeck.length - 1;
 
-// playingDeck = 
-// //  if (`${}` = true;
-// //  acc = i++
-// //  else resetBoard()
+//     if (value === "high") {
+//         return cardB >= cardA;
+//     } else {
+//         return cardB <= cardA;
+//     }
+// }
 
+var cardValues = {
+    1:['D1','H1','S1','C1'],
+    2:['D2','H2','S2','C2'],
+    3:['D3','H3','S3','C3'],
+    4:['D4','H4','S4','C4'],
+    5:['D5','H5','S5','C5'],
+    6:['D6','H6','S6','C6'],
+    7:['D7','H7','S7','C7'],
+    8:['D8','H8','S8','C8'],
+    9:['D9','H9','S9','C9'],
+    10:['D10','H10','S10','C10'],
+    11:['D11','H11','S11','C11'],
+    12:['D12','H12','S12','C12'],
+    13:['D13','H13','S13','C13'],
+}
+
+
+
+function createPlayingDeck() {
+    for (var i = 0); i < playingDeck.length; i++) {
+
+    }
+}
 
 
 
 function render() {
 // //render the results
-drinksScoreEl.style.backgroundImage = `url(${drinks[board.drinks].img})`;
-cardBackEl.style.backgroundImage = `url(${cardBack[board.cards].img})`;
+// drinksScoreEl.style.backgroundImage = `url(${images/drinksImages/empty.png})`;
+// cardBackEl.style.backgroundImage = `url(${cardBack[board.cards].img})`;
 
 }
 

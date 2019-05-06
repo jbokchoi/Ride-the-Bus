@@ -39,7 +39,7 @@ html, body {
     display: grid;
     align-content: center;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 0.7fr 0.7fr 0.5fr 1.5fr 1.5fr;
+    grid-template-rows: 0.7fr 0.7fr 0.5fr 0.75fr 0.75fr;
     grid-gap: 2px;
     grid-template-areas:
         "title title title"
@@ -65,10 +65,10 @@ html, body {
       
     @-webkit-keyframes glow {
     from {
-        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #3e0fe9, 0 0 40px #3e0fe9, 0 0 50px #3e0fe9, 0 0 60px #3e0fe9, 0 0 70px #3e0fe9;
     }
     to {
-        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+        text-shadow: 0 0 20px #fff, 0 0 30px #09d3d6, 0 0 40px #09d3d6, 0 0 50px #09d3d6, 0 0 60px #09d3d6, 0 0 70px #09d3d6, 0 0 80px #09d3d6;
     }
 }
 
@@ -108,7 +108,7 @@ div > #instructions {
 #same, #higher, #lower {
     text-align: center;
     font-size: 100%;  
-    background-color: #e60073;
+    background-color: #3e0fe9;
     border-radius: 4px;
     font-family: 'Arimo', sans-serif;
     width: 75%;
@@ -117,6 +117,7 @@ div > #instructions {
     color: white;
     font-weight: 700;
     letter-spacing: 2px;
+    margin-bottom: 2em;
 }
 
 #same {
@@ -135,26 +136,28 @@ div > #instructions {
 
 #beverages {
     grid-area: drinks;
-    display: grid;
-    width: 80%;
-    justify-self: center;
-    
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-position: center; 
+}
 
+#beverages > img {
+    height: 15vmax;
+    margin: 0px 25px 0px 25px;
 }
 
 #playing-deck {
     grid-area: cards;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-}
-
-[id*="ink"], [id^="card"] {
     display: flex;
     justify-content: center;
-    align-items: center;  
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    border: 1px solid grey;
+    align-items: center; 
+    background-position: center; 
+    /* grid-template-columns: repeat(6, 1fr); */
+}
+
+#playing-deck > img {
+    background-color: white;
+    margin: 0px 5px 0px 5px;
+    height: 18vmax;
 }

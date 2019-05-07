@@ -1,148 +1,165 @@
 /*----- constants -----*/ 
+var cards = [
+    { card: 'D1', value: 1, img: 'images/diamonds/diamonds-A.svg'},
+    { card: 'D2', value: 2, img: 'images/diamonds/diamonds-r02.svg'},    
+    { card: 'D3', value: 3, img: 'images/diamonds/diamonds-r03.svg'},    
+    { card: 'D4', value: 4, img: 'images/diamonds/diamonds-r04.svg'},    
+    { card: 'D5', value: 5, img: 'images/diamonds/diamonds-r05.svg'},    
+    { card: 'D6', value: 6, img: 'images/diamonds/diamonds-r06.svg'},    
+    { card: 'D7', value: 7, img: 'images/diamonds/diamonds-r07.svg'},    
+    { card: 'D8', value: 8, img: 'images/diamonds/diamonds-r08.svg'},    
+    { card: 'D9', value: 9, img: 'images/diamonds/diamonds-r09.svg'},    
+    { card: 'D10', value: 10, img: 'images/diamonds/diamonds-r10.svg'},    
+    { card: 'D11', value: 11, img: 'images/diamonds/diamonds-J.svg'},    
+    { card: 'D12', value: 12, img: 'images/diamonds/diamonds-Q.svg'},    
+    { card: 'D13', value: 13, img: 'images/diamonds/diamonds-K.svg'},    
+    { card: 'H1', value: 1, img: 'images/hearts/hearts-A.svg'},
+    { card: 'H2', value: 2, img: 'images/hearts/hearts-r02.svg'},    
+    { card: 'H3', value: 3, img: 'images/hearts/hearts-r03.svg'},    
+    { card: 'H4', value: 4, img: 'images/hearts/hearts-r04.svg'},    
+    { card: 'H5', value: 5, img: 'images/hearts/hearts-r05.svg'},    
+    { card: 'H6', value: 6, img: 'images/hearts/hearts-r06.svg'},    
+    { card: 'H7', value: 7, img: 'images/hearts/hearts-r07.svg'},    
+    { card: 'H8', value: 8, img: 'images/hearts/hearts-r08.svg'},    
+    { card: 'H9', value: 9, img: 'images/hearts/hearts-r09.svg'},    
+    { card: 'H10', value: 10, img: 'images/hearts/hearts-r10.svg'},    
+    { card: 'H11', value: 11, img: 'images/hearts/hearts-J.svg'},    
+    { card: 'H12', value: 12, img: 'images/hearts/hearts-Q.svg'},    
+    { card: 'H13', value: 13, img: 'images/hearts/hearts-K.svg'},  
+    { card: 'C1', value: 1, img: 'images/clubs/clubs-A.svg'},
+    { card: 'C2', value: 2, img: 'images/clubs/clubs-r02.svg'},    
+    { card: 'C3', value: 3, img: 'images/clubs/clubs-r03.svg'},    
+    { card: 'C4', value: 4, img: 'images/clubs/clubs-r04.svg'},    
+    { card: 'C5', value: 5, img: 'images/clubs/clubs-r05.svg'},    
+    { card: 'C6', value: 6, img: 'images/clubs/clubs-r06.svg'},    
+    { card: 'C7', value: 7, img: 'images/clubs/clubs-r07.svg'},    
+    { card: 'C8', value: 8, img: 'images/clubs/clubs-r08.svg'},    
+    { card: 'C9', value: 9, img: 'images/clubs/clubs-r09.svg'},    
+    { card: 'C10', value: 10, img: 'images/clubs/clubs-r10.svg'},    
+    { card: 'C11', value: 11, img: 'images/clubs/clubs-J.svg'},    
+    { card: 'C12', value: 12, img: 'images/clubs/clubs-Q.svg'},    
+    { card: 'C13', value: 13, img: 'images/clubs/clubs-K.svg'},  
+    { card: 'S1', value: 1, img: 'images/spades/spades-A.svg'},
+    { card: 'S2', value: 2, img: 'images/spades/spades-r02.svg'},    
+    { card: 'S3', value: 3, img: 'images/spades/spades-r03.svg'},    
+    { card: 'S4', value: 4, img: 'images/spades/spades-r04.svg'},    
+    { card: 'S5', value: 5, img: 'images/spades/spades-r05.svg'},    
+    { card: 'S6', value: 6, img: 'images/spades/spades-r06.svg'},    
+    { card: 'S7', value: 7, img: 'images/spades/spades-r07.svg'},    
+    { card: 'S8', value: 8, img: 'images/spades/spades-r08.svg'},    
+    { card: 'S9', value: 9, img: 'images/spades/spades-r09.svg'},    
+    { card: 'S10', value: 10, img: 'images/spades/spades-r10.svg'},    
+    { card: 'S11', value: 11, img: 'images/spades/spades-J.svg'},    
+    { card: 'S12', value: 12, img: 'images/spades/spades-Q.svg'},    
+    { card: 'S13', value: 13, img: 'images/spades/spades-K.svg'},
+];
+
 
 /*----- app's state (variables) -----*/ 
-let winner, scores, results;
 
-burntDeck=[];
+let winner, scores, results, cardCount;
 
-let drinks = {
-    0: {
-        img:'images/drinksImages/empty.png'
-    },
-    1: {
-        img: 'images/drinksImages/quarter.png'
-    },
-    2: {
-        img: 'images/drinksImages/half.png'
-    },
-    2: {
-        img: 'images/drinksImages/threeQuarters.png'
-    },
-    4: {
-        img: 'images/drinksImages/full.png'
-    },
-}
 
-let cardBack = {
-    img: "images/backs/blue.svg"
-};
 
 /*----- cached element references -----*/ 
-const cardBackEl = document.querySelector('#playing-deck > #card0')
-const drinksScoreEl = document.querySelector('#beverages > #drink0')
-// const cardsLeftEl= document.querySelector('#c-score > h2')
-// const 
-// nOfDrinks
-// nOfCardsLeft
+var alertEl = document.getElementById('alert');
 
 
 
 /*----- event listeners -----*/ 
-// document.querySelector('#higher').addEventListener('click', handleHigher);
-// document.querySelector('#same').addEventListener('click', handleSame);
-// document.querySelector('#lower').addEventListener('click', handleLower);
+document.getElementById('higher').addEventListener('click', handleHigher);
+document.getElementById('lower').addEventListener('click', handleLower);
 
 
 /*----- functions -----*/
 
-start();
+// start();
 
-// function handleHigher(){
-
-// }
-
-// function handleSame(){
-
-// }
-
-// function handleLower(){
-
-// }
-
-
-
-cardDeck =  [ 
-    'D1','H1','S1','C1','D2','H2','S2','C2','D3','H3','S3','C3','D4','H4','S4','C4',
-    'D5','H5','S5','C5','D6','H6','S6','C6','D7','H7','S7','C7','D8','H8','S8','C8',
-    'D9','H9','S9','C9','D10','H10','S10','C10','D11','H11','S11','C11',
-    'D12','H12','S12','C12','D13','H13','S13','C13',];
-    
 function shuffle() {
-    var shuffledDeck = cardDeck.length;
+    var shuffledDeck = cards.length;
     var index, temp;
     while (shuffledDeck > 0) {
         index = Math.floor(Math.random() * shuffledDeck);
         shuffledDeck --;
-        temp = cardDeck[shuffledDeck];
-        cardDeck[shuffledDeck] = cardDeck[index];
-        cardDeck[index] = temp;
+        temp = cards[shuffledDeck];
+        cards[shuffledDeck] = cards[index];
+        cards[index] = temp;
     }
-    return cardDeck;
+    return cards;
 };
 
 shuffle();
-var playingDeck = cardDeck.splice(0, 6);
 
-// function compare(value){
-//     var cardA = playingDeck.length - 2,
-//     var cardB = playingDeck.length - 1;
+cardCount = 1;
 
-//     if (value === "high") {
-//         return cardB >= cardA;
-//     } else {
-//         return cardB <= cardA;
+function createPlayingDeck(cards) {
+    console.log(cards);
+    var firstCard = document.createElement('img');
+    firstCard.setAttribute('src', cards[0].img )
+    firstCard.setAttribute('id', 0)
+    document.getElementById('playing-deck').appendChild(firstCard);
+    
+    for (var i = 1; i < cards.length-1; i++) {
+        var cardElement = document.createElement('img');
+        cardElement.setAttribute('src', 'images/backs/blue.svg');
+        cardElement.setAttribute('id', i);
+        document.getElementById('playing-deck').appendChild(cardElement);
+    }
+}
+createPlayingDeck(cards);
+
+
+function handleHigher() {
+   flipNextCard(); 
+   console.log(cardCount)
+   if(cards[cardCount -2].value <= cards[cardCount-1].value){
+       // winning logic
+       console.log('good job, keep going!')
+       alertEl.textContent = 'WINNING!'
+    } else {
+        console.log('drink!')
+        alertEl.textContent = 'DRINK!'
+    }  
+}
+
+function handleLower() {
+    flipNextCard();
+    console.log(cardCount)
+    if(cards[cardCount - 2].value >= cards[cardCount-1].value){
+        // winning logic
+        console.log('good job, keep going!')
+        alertEl.textContent = 'WINNING!'
+    } else {
+        console.log('drink!');
+        alertEl.textContent = 'DRINK!'
+    }
+}
+
+function flipNextCard() {    
+    var nextCard = document.createElement('img');
+    console.log(document.getElementById(`${cardCount}`))
+    document.getElementById(`${cardCount}`).setAttribute('src', cards[cardCount].img);
+    nextCard.setAttribute('src', cards[cardCount].img);
+    cardCount = cardCount + 1;
+}
+
+
+// function start() {
+//     winner = null;
+//     results = { 
+//         cards: 'playingDeck',
+//         drinks: 'drinks',
 //     }
+//     board = {
+//         drinks: [0, 0, 0, 0, 0],
+//         cards: [null, null, null, null, null, null],
+//     }
+//     // scores = {
+//     //     nOfDrinks: 0,
+//     //     nOfCardsLeft: (cardDeck.length + 1) - 1,
+//     // }
+//     render ();
 // }
-
-var cardValues = {
-    1:['D1','H1','S1','C1'],
-    2:['D2','H2','S2','C2'],
-    3:['D3','H3','S3','C3'],
-    4:['D4','H4','S4','C4'],
-    5:['D5','H5','S5','C5'],
-    6:['D6','H6','S6','C6'],
-    7:['D7','H7','S7','C7'],
-    8:['D8','H8','S8','C8'],
-    9:['D9','H9','S9','C9'],
-    10:['D10','H10','S10','C10'],
-    11:['D11','H11','S11','C11'],
-    12:['D12','H12','S12','C12'],
-    13:['D13','H13','S13','C13'],
-}
-
-
-
-function createPlayingDeck() {
-    for (var i = 0); i < playingDeck.length; i++) {
-
-    }
-}
-
-
-
-function render() {
-// //render the results
-// drinksScoreEl.style.backgroundImage = `url(${images/drinksImages/empty.png})`;
-// cardBackEl.style.backgroundImage = `url(${cardBack[board.cards].img})`;
-
-}
-
-function start() {
-    winner = null;
-    results = { 
-        cards: 'playingDeck',
-        drinks: 'drinks',
-    }
-    board = {
-        drinks: [0, 0, 0, 0, 0],
-        cards: [null, null, null, null, null, null],
-    }
-    // scores = {
-    //     nOfDrinks: 0,
-    //     nOfCardsLeft: (cardDeck.length + 1) - 1,
-    // }
-    render ();
-}
 
 
 

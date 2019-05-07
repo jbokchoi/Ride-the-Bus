@@ -2,67 +2,40 @@
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100vmax;
-    height: 100vmax;
-    padding: 0;
+body {
     margin: 0;
     background-color: #222222;
-
-}
-
-.centered-wrapper {
-    position: relative;
-    text-align: center;
-    height: 100vh;
-}
-
-.centered-wrapper:before {
-    content:"";
-    position: relative;
-    display: inline-block;
-    width: 0;
-    height: 100vmin;
-    vertical-align: middle;
-}
-
-.centered-content {
-    display: inline-block;
-    vertical-align: middle;
-    /* border: 1px solid black; */
-    margin: 5vmin;
+    display: flex;
 }
 
 .game {
-    min-width: 600px;
-    min-height: 600px;
+    margin: 0;
     display: grid;
-    align-content: center;
+    justify-items: center;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 0.7fr 0.7fr 0.5fr 0.75fr 0.75fr;
-    grid-gap: 2px;
+    grid-auto-rows: 10% 10% 10% 30% auto;
     grid-template-areas:
         "title title title"
         "message message message"
-        "buttons1 buttons2 buttons3"
-        "drinks drinks drinks "
+        "buttons1 alert buttons3"
         "cards cards cards";
+    
 }
 
 .glow {
     grid-area: title;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     font-family: 'Monoton', cursive;
-    font-size: 50px;
+    font-size: 60px;
+    letter-spacing: 3px;
     color: #fff;
     text-align: center;
     -webkit-animation: glow 1s ease-in-out infinite alternate;
     -moz-animation: glow 1s ease-in-out infinite alternate;
     animation: glow 1s ease-in-out infinite alternate;
 }
-      
     @-webkit-keyframes glow {
     from {
         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #3e0fe9, 0 0 40px #3e0fe9, 0 0 50px #3e0fe9, 0 0 60px #3e0fe9, 0 0 70px #3e0fe9;
@@ -72,14 +45,30 @@ html, body {
     }
 }
 
-div > #instructions {
+#alert {
+    grid-area: alert;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Monoton', cursive;
+    font-size: 50px;
+    color:#09d3d6;
+    text-align: center;
+}
+
+div > #instructions {
     grid-area: message;
+    display: grid;
     align-items: center;
     justify-content: space-around;
     font-family: 'Merriweather Sans', sans-serif;
     margin-top: 3vmin;
-}
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr 1fr;
+    grid-template-areas:
+        "player-msg player-msg"
+        "drinks-score win-score"
+} 
 
 #d-score, #c-score {
     display: flex;
@@ -98,66 +87,54 @@ div > #instructions {
     font-weight: 800;
 }
 
+#d-score {
+    grid-area: drinks-score;
+}
+
+#c-score {
+    grid-area: win-score;
+}
+
 #d-score > img {
     height: 20vmin;
     background-repeat: no-repeat;
     background-size: contain;
-
 }
 
-#same, #higher, #lower {
-    text-align: center;
+#higher, #lower {
+    justify-content: center;   
     font-size: 100%;  
     background-color: #3e0fe9;
     border-radius: 4px;
     font-family: 'Arimo', sans-serif;
-    width: 75%;
-    justify-self: center;
+    width: 60%;
     margin: 2%;
     color: white;
     font-weight: 700;
     letter-spacing: 2px;
-    margin-bottom: 2em;
-}
-
-#same {
-    grid-area: buttons2;
-
+    margin: 2em;
 }
 
 #higher {
     grid-area: buttons1;
-
 }
 
 #lower {
     grid-area: buttons3;
 }
 
-#beverages {
-    grid-area: drinks;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    background-position: center; 
-}
-
-#beverages > img {
-    height: 15vmax;
-    margin: 0px 25px 0px 25px;
-}
-
 #playing-deck {
     grid-area: cards;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center; 
-    background-position: center; 
-    /* grid-template-columns: repeat(6, 1fr); */
 }
 
 #playing-deck > img {
     background-color: white;
-    margin: 0px 5px 0px 5px;
-    height: 18vmax;
+    margin: 5px;
+    height: 14vmax;
+    border: 2px solid transparent;
+    border-radius: 5px;
+
 }

@@ -57,8 +57,7 @@ var cards = [
 
 /*----- app's state (variables) -----*/ 
 
-let winner, scores, results, cardCount;
-
+let winner, scores, cardCount;
 
 
 /*----- cached element references -----*/ 
@@ -66,11 +65,12 @@ var alertEl = document.getElementById('alert');
 var drinksEl = document.getElementById('d-count');
 var winStreakEl = document.getElementById('c-count');
 
-
 /*----- event listeners -----*/ 
 document.getElementById('higher').addEventListener('click', handleHigher);
 document.getElementById('lower').addEventListener('click', handleLower);
-document.getElementById('restart').addEventListener('click', start)
+document.getElementById('restart').addEventListener('click', restart);
+document.getElementById('reset').addEventListener('click', restart);
+
 
 /*----- functions -----*/
 
@@ -89,39 +89,40 @@ function shuffle() {
     return cards;
 };
 
-shuffle();
+// shuffle();
 
 cardCount = 1;
 
 function createPlayingDeck(cards) {
+    var playingDeck = document.createElement('div');
+    playingDeck.setAttribute('id', 'cards');
+    document.getElementById('playing-deck').appendChild(playingDeck);
+
     var firstCard = document.createElement('img');
     firstCard.setAttribute('src', cards[0].img )
     firstCard.setAttribute('id', 0)
-    document.getElementById('playing-deck').appendChild(firstCard);
+    document.getElementById('cards').appendChild(firstCard);
     
     for (var i = 1; i < cards.length-1; i++) {
         var cardElement = document.createElement('img');
         cardElement.setAttribute('src', 'images/backs/blue.svg');
         cardElement.setAttribute('id', i);
-        document.getElementById('playing-deck').appendChild(cardElement);
+        document.getElementById('cards').appendChild(cardElement);
     }
 }
-createPlayingDeck(cards);
+// createPlayingDeck(cards);
 
 
 function handleHigher() {
    flipNextCard(); 
-   console.log(cardCount)
    if(cards[cardCount -2].value <= cards[cardCount-1].value){
        // winning logic
-       console.log('good job, keep going!')
        alertEl.textContent = 'WINNING!'
        scores.winStreak++
        winStreakEl.textContent = scores.winStreak;
        winner++
        checkWinner();
     } else {
-        console.log('drink!')
         alertEl.textContent = 'DRINK!'
         scores.drinks++
         drinksEl.textContent = scores.drinks
@@ -131,17 +132,14 @@ function handleHigher() {
 
 function handleLower() {
     flipNextCard();
-    console.log(cardCount)
     if(cards[cardCount - 2].value >= cards[cardCount-1].value){
         // winning logic
-        console.log('good job, keep going!')
         alertEl.textContent = 'WINNING!'
         scores.winStreak++
         winStreakEl.textContent = scores.winStreak;
         winner++
         checkWinner();
     } else {
-        console.log('drink!');
         alertEl.textContent = 'DRINK!'
         scores.drinks++
         drinksEl.textContent = scores.drinks
@@ -151,7 +149,6 @@ function handleLower() {
 
 function flipNextCard() {    
     var nextCard = document.createElement('img');
-    console.log(document.getElementById(`${cardCount}`))
     document.getElementById(`${cardCount}`).setAttribute('src', cards[cardCount].img);
     nextCard.setAttribute('src', cards[cardCount].img);
     cardCount++;
@@ -159,6 +156,7 @@ function flipNextCard() {
 
 function resetWinStreak() {
     scores.winStreak = 0;
+    winner = 0;
     winStreakEl.innerHTML = scores.winStreak;
 }
 
@@ -171,14 +169,35 @@ function checkWinner() {
     }
 }
 
+function render() {
+    shuffle();
+    createPlayingDeck(cards);
+}
 
 function start() {
     scores = {
         drinks: 0,
         winStreak: 0,
-    }
-    winner = 0;
+    },
+    winner = 0,
+    render ();
 }
 
+function restart() {
+    var div = document.getElementById('cards');
+    div.remove();
+    scores = {
+        drinks: 0,
+        winStreak: 0,
+    },
+    winner = 0,
+    winStreakEl.innerHTML = scores.winStreak;
+    drinksEl.innerHTML = scores.drinks;
+    alertEl.innerHTML = ''
+    document.getElementById('higher').style.display = "block";
+    document.getElementById('lower').style.display = "block";
+    document.getElementById('restart').style.display = "none";
+    start();
+}
 
 

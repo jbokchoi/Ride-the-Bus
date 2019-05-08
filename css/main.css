@@ -13,25 +13,32 @@ body {
     display: grid;
     justify-items: center;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: 5vh 20vh 20vh 20vh 40vh auto;
+    grid-auto-rows: 20vh 5vh 20vh 20vh 40vh auto;
     grid-template-areas:
-        "header header header"
-        "title title title"
+        "title title title"   
+        "nav nav nav"
         "message message message"
         "buttons1 alert buttons3"
         "cards cards cards";
+}
+
+nav {
+    grid-area: nav;
+    display: flex;
     
 }
 
-header {
-    grid-area: header;
+nav > button {
+    color: white;
+    background-color: transparent;
+    border-color: transparent;
+
 }
 
 .glow {
     grid-area: title;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
     font-family: 'Monoton', cursive;
     font-size: 10vmax;
     letter-spacing: 3px;
@@ -148,11 +155,16 @@ div > #instructions {
 #playing-deck {
     grid-area: cards;
     display: flex;
+    justify-content: center;
+}
+
+#cards {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-#playing-deck > img {
+#cards > img {
     background-color: white;
     margin: 5px;
     height: 14vmax;

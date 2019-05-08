@@ -12,35 +12,49 @@ body {
     margin: 0;
     display: grid;
     justify-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: 20vh 5vh 20vh 20vh 40vh auto;
+    align-self: center;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 50vh auto 10vh 10vh ;
     grid-template-areas:
+        "controls"
+        "cards"
+        "nav"
+        "footer"
+}
+
+#controls {
+    display: grid;
+    grid-gap: 3vmin;
+    margin: 5vmin;
+    justify-items: center;
+    align-self: center;
+    min-width: 0;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: 20vh; */
+    grid-template-areas: 
         "title title title"   
-        "nav nav nav"
         "message message message"
         "buttons1 alert buttons3"
-        "cards cards cards";
 }
 
 nav {
     grid-area: nav;
     display: flex;
-    
 }
 
 nav > button {
     color: white;
     background-color: transparent;
     border-color: transparent;
-
 }
 
 .glow {
     grid-area: title;
+    padding: 3px;
     display: flex;
     justify-content: center;
     font-family: 'Monoton', cursive;
-    font-size: 10vmax;
+    font-size: 10vmin;
     letter-spacing: 3px;
     color: #fff;
     text-align: center;
@@ -60,11 +74,12 @@ nav > button {
 #alert {
     grid-area: alert;
     display: flex;
-    flex-direction: column;
+    flex-flow: wrap;
+    width: 100px;
     align-items: center;
     justify-content: center;
     font-family: 'Monoton', cursive;
-    font-size: 5vmax;
+    font-size: 5vmin;
     color:#09d3d6;
     text-align: center;
 }
@@ -76,9 +91,8 @@ div > #instructions {
     align-items: center;
     justify-items: center;
     font-family: 'Oxygen', sans-serif;    
-    margin-top: 3vmin;
-    width: 100vmax;
-    grid-template-columns: 1fr 0.5fr 1fr;
+    width: 100vmin;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: 1fr;
     grid-template-areas:
         "drinks-score restart win-score"
@@ -102,12 +116,13 @@ div > #instructions {
 #d-score, #c-score {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-self: center;
     justify-content: center;
     font-family: 'Oxygen', sans-serif;
     letter-spacing: 2px;
     color: white;
     font-weight: 800;
+    font-size: 3vmin;
 }
 
 #d-score > h2, #c-score > h2 {
@@ -132,16 +147,16 @@ div > #instructions {
 
 #higher, #lower {
     justify-content: center;   
+    align-self: center; 
     font-size: 100%;  
     background-color: #3e0fe9;
     border-radius: 4px;
     font-family: 'Oxygen', sans-serif;
-    width: 60%;
-    margin: 2%;
+    width: 30vmin;
+    height: 10vmin;
     color: white;
     font-weight: 700;
     letter-spacing: 2px;
-    margin: 2em;
 }
 
 #higher {
@@ -167,8 +182,14 @@ div > #instructions {
 #cards > img {
     background-color: white;
     margin: 5px;
-    height: 14vmax;
+    height: 12vmax;
     border: 2px solid transparent;
     border-radius: 3px;
+}
 
+footer {
+    grid-area: footer;
+    font-family: 'Oxygen', sans-serif;
+    color: white;
+    font-weight: 800;
 }

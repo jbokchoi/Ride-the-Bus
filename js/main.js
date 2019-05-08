@@ -76,6 +76,8 @@ document.getElementById('reset').addEventListener('click', restart);
 
 start();
 
+/* ---- card functions ---- */
+
 function shuffle() {
     var shuffledDeck = cards.length;
     var index, temp;
@@ -89,10 +91,6 @@ function shuffle() {
     return cards;
 };
 
-// shuffle();
-
-cardCount = 1;
-
 function createPlayingDeck(cards) {
     var playingDeck = document.createElement('div');
     playingDeck.setAttribute('id', 'cards');
@@ -103,69 +101,131 @@ function createPlayingDeck(cards) {
     firstCard.setAttribute('id', 0)
     document.getElementById('cards').appendChild(firstCard);
     
-    for (var i = 1; i < cards.length-1; i++) {
+    for (var i = 1; i < cards.length; i++) {
         var cardElement = document.createElement('img');
         cardElement.setAttribute('src', 'images/backs/blue.svg');
         cardElement.setAttribute('id', i);
         document.getElementById('cards').appendChild(cardElement);
     }
 }
-// createPlayingDeck(cards);
 
+/* ---- compare high or low functions ---- */
 
 function handleHigher() {
    flipNextCard(); 
-   if(cards[cardCount -2].value <= cards[cardCount-1].value){
-       // winning logic
-       alertEl.textContent = 'WINNING!'
-       scores.winStreak++
-       winStreakEl.textContent = scores.winStreak;
-       winner++
-       checkWinner();
-    } else {
-        alertEl.textContent = 'DRINK!'
-        scores.drinks++
-        drinksEl.textContent = scores.drinks
-        resetWinStreak();
-    }  
+   if(cardCount != 52){
+       if(cards[cardCount -2].value <= cards[cardCount-1].value){
+           alertEl.textContent = 'WINNING!'
+           scores.winStreak++
+           winStreakEl.textContent = scores.winStreak;
+           winner++
+           checkWinner();
+        } else {
+            alertEl.textContent = 'DRINK!'
+            scores.drinks++
+            drinksEl.textContent = scores.drinks
+            resetWinStreak();
+        }  
+   }
 }
 
 function handleLower() {
     flipNextCard();
-    if(cards[cardCount - 2].value >= cards[cardCount-1].value){
-        // winning logic
-        alertEl.textContent = 'WINNING!'
-        scores.winStreak++
-        winStreakEl.textContent = scores.winStreak;
-        winner++
-        checkWinner();
-    } else {
-        alertEl.textContent = 'DRINK!'
-        scores.drinks++
-        drinksEl.textContent = scores.drinks
-        resetWinStreak();
+    if(cardCount != 52){
+        if(cards[cardCount - 2].value >= cards[cardCount-1].value){
+            alertEl.textContent = 'WINNING!'
+            scores.winStreak++
+            winStreakEl.textContent = scores.winStreak;
+            winner++
+            checkWinner();
+        } else {
+            alertEl.textContent = 'DRINK!'
+            scores.drinks++
+            drinksEl.textContent = scores.drinks
+            resetWinStreak();
+        }
     }
+
 }
 
-function flipNextCard() {    
+/* ---- retrieve next card ---- */
+
+function flipNextCard() { 
+    if (cardCount === 52) {
+        gameOver();
+    }  else {
     var nextCard = document.createElement('img');
     document.getElementById(`${cardCount}`).setAttribute('src', cards[cardCount].img);
     nextCard.setAttribute('src', cards[cardCount].img);
     cardCount++;
+    hideCards();
+    }
 }
 
-function resetWinStreak() {
-    scores.winStreak = 0;
-    winner = 0;
-    winStreakEl.innerHTML = scores.winStreak;
-}
+/* ---- winner logic ---- */
 
 function checkWinner() {
     if (winner === 7) {
-        alertEl.innerHTML = 'WINNER!'
+        alertEl.textContent = 'WINNER!'
         document.getElementById('higher').style.display = "none";
         document.getElementById('lower').style.display = "none";
         document.getElementById('restart').style.display = "block";
+    }
+}
+
+function gameOver() {
+    if (cardCount === 52) {
+        alertEl.textContent = `GAMEOVER`
+        document.getElementById('higher').style.display = "none";
+        document.getElementById('lower').style.display = "none";
+        document.getElementById('restart').style.display = "block";
+    }
+}
+
+function hideCards() {
+    if (cardCount === 10) {
+        document.getElementById('0').style.display = "none";
+        document.getElementById('1').style.display = "none";
+        document.getElementById('2').style.display = "none";
+        document.getElementById('3').style.display = "none";
+        document.getElementById('4').style.display = "none";
+        document.getElementById('5').style.display = "none";
+        document.getElementById('6').style.display = "none";
+        document.getElementById('7').style.display = "none";
+        document.getElementById('8').style.display = "none";
+    }
+    if (cardCount === 19) {
+        document.getElementById('9').style.display = "none";
+        document.getElementById('10').style.display = "none";
+        document.getElementById('11').style.display = "none";
+        document.getElementById('12').style.display = "none";
+        document.getElementById('13').style.display = "none";
+        document.getElementById('14').style.display = "none";
+        document.getElementById('15').style.display = "none";
+        document.getElementById('16').style.display = "none";
+        document.getElementById('17').style.display = "none";
+    }
+    if (cardCount === 28) {
+        document.getElementById('18').style.display = "none";
+        document.getElementById('19').style.display = "none";
+        document.getElementById('20').style.display = "none";
+        document.getElementById('21').style.display = "none";
+        document.getElementById('22').style.display = "none";
+        document.getElementById('23').style.display = "none";
+        document.getElementById('24').style.display = "none";
+        document.getElementById('25').style.display = "none";
+        document.getElementById('26').style.display = "none";
+    }
+    if (cardCount === 37) {
+        document.getElementById('27').style.display = "none";
+        document.getElementById('28').style.display = "none";
+        document.getElementById('29').style.display = "none";
+        document.getElementById('30').style.display = "none";
+        document.getElementById('31').style.display = "none";
+        document.getElementById('32').style.display = "none";
+        document.getElementById('33').style.display = "none";
+        document.getElementById('34').style.display = "none";
+        document.getElementById('35').style.display = "none";
     }
 }
 
@@ -180,7 +240,16 @@ function start() {
         winStreak: 0,
     },
     winner = 0,
+    cardCount = 1,
     render ();
+}
+
+/* ---- reset functions---- */
+
+function resetWinStreak() {
+    scores.winStreak = 0;
+    winner = 0;
+    winStreakEl.innerHTML = scores.winStreak;
 }
 
 function restart() {
@@ -190,10 +259,10 @@ function restart() {
         drinks: 0,
         winStreak: 0,
     },
-    winner = 0,
-    winStreakEl.innerHTML = scores.winStreak;
+    resetWinStreak();
     drinksEl.innerHTML = scores.drinks;
-    alertEl.innerHTML = ''
+    alertEl.innerHTML = '';
+    cardCount = 1;
     document.getElementById('higher').style.display = "block";
     document.getElementById('lower').style.display = "block";
     document.getElementById('restart').style.display = "none";

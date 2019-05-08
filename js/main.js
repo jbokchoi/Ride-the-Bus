@@ -63,17 +63,18 @@ let winner, scores, results, cardCount;
 
 /*----- cached element references -----*/ 
 var alertEl = document.getElementById('alert');
-
+var drinksEl = document.getElementById('d-count');
+var winStreakEl = document.getElementById('c-count');
 
 
 /*----- event listeners -----*/ 
 document.getElementById('higher').addEventListener('click', handleHigher);
 document.getElementById('lower').addEventListener('click', handleLower);
-
+document.getElementById('restart').addEventListener('click', start)
 
 /*----- functions -----*/
 
-// start();
+start();
 
 function shuffle() {
     var shuffledDeck = cards.length;
@@ -93,7 +94,6 @@ shuffle();
 cardCount = 1;
 
 function createPlayingDeck(cards) {
-    console.log(cards);
     var firstCard = document.createElement('img');
     firstCard.setAttribute('src', cards[0].img )
     firstCard.setAttribute('id', 0)
@@ -116,9 +116,16 @@ function handleHigher() {
        // winning logic
        console.log('good job, keep going!')
        alertEl.textContent = 'WINNING!'
+       scores.winStreak++
+       winStreakEl.textContent = scores.winStreak;
+       winner++
+       checkWinner();
     } else {
         console.log('drink!')
         alertEl.textContent = 'DRINK!'
+        scores.drinks++
+        drinksEl.textContent = scores.drinks
+        resetWinStreak();
     }  
 }
 
@@ -129,9 +136,16 @@ function handleLower() {
         // winning logic
         console.log('good job, keep going!')
         alertEl.textContent = 'WINNING!'
+        scores.winStreak++
+        winStreakEl.textContent = scores.winStreak;
+        winner++
+        checkWinner();
     } else {
         console.log('drink!');
         alertEl.textContent = 'DRINK!'
+        scores.drinks++
+        drinksEl.textContent = scores.drinks
+        resetWinStreak();
     }
 }
 
@@ -140,27 +154,31 @@ function flipNextCard() {
     console.log(document.getElementById(`${cardCount}`))
     document.getElementById(`${cardCount}`).setAttribute('src', cards[cardCount].img);
     nextCard.setAttribute('src', cards[cardCount].img);
-    cardCount = cardCount + 1;
+    cardCount++;
+}
+
+function resetWinStreak() {
+    scores.winStreak = 0;
+    winStreakEl.innerHTML = scores.winStreak;
+}
+
+function checkWinner() {
+    if (winner === 7) {
+        alertEl.innerHTML = 'WINNER!'
+        document.getElementById('higher').style.display = "none";
+        document.getElementById('lower').style.display = "none";
+        document.getElementById('restart').style.display = "block";
+    }
 }
 
 
-// function start() {
-//     winner = null;
-//     results = { 
-//         cards: 'playingDeck',
-//         drinks: 'drinks',
-//     }
-//     board = {
-//         drinks: [0, 0, 0, 0, 0],
-//         cards: [null, null, null, null, null, null],
-//     }
-//     // scores = {
-//     //     nOfDrinks: 0,
-//     //     nOfCardsLeft: (cardDeck.length + 1) - 1,
-//     // }
-//     render ();
-// }
-
+function start() {
+    scores = {
+        drinks: 0,
+        winStreak: 0,
+    }
+    winner = 0;
+}
 
 
 

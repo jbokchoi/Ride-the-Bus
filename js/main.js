@@ -54,6 +54,8 @@ var cards = [
     { card: 'S13', value: 13, img: 'images/spades/spades-K.svg'},
 ];
 
+/*----- sound constants -----*/ 
+
 const winClip = new Audio('sounds/right.wav');
 const drinkClip = new Audio('sounds/wrong.wav');
 const partyClip = new Audio('sounds/party.mp3');
@@ -61,19 +63,16 @@ const winnerClip = new Audio('sounds/win.mp3');
 winnerClip.volume = 1.0;
 partyClip.volume = 1.0;
 
-
-
 /*----- app's state (variables) -----*/ 
 
 let winner, scores, cardCount;
-
 
 /*----- cached element references -----*/ 
 var alertEl = document.getElementById('alert');
 var drinksEl = document.getElementById('d-count');
 var winStreakEl = document.getElementById('c-count');
 
-// var modalEl = document.querySelector(".modal");
+$('#my-modal').modal('show')
 
 /*----- event listeners -----*/ 
 document.getElementById('higher').addEventListener('click', handleHigher);
@@ -139,7 +138,6 @@ function handleHigher() {
             drinksEl.textContent = scores.drinks
             drinkClip.play();
             resetWinStreak();
-
         }  
    }
 }
@@ -260,7 +258,6 @@ function start() {
     },
     winner = 0,
     cardCount = 1,
-    $('#my-modal').modal('show')
     render ();
 }
 
@@ -293,6 +290,7 @@ function restart() {
     document.getElementById('lower').style.display = "block";
     document.getElementById('restart').style.display = "none";
     start();
+    partyClip.pause();
 }
 
 

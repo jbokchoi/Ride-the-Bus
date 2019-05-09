@@ -47,6 +47,7 @@ nav > button {
     border-color: transparent;
 }
 
+
 .glow {
     grid-area: title;
     padding: 3px;
@@ -82,7 +83,6 @@ nav > button {
     color:#09d3d6;
     text-align: center;
 }
-
 
 div > #instructions {
     grid-area: message;
@@ -133,7 +133,6 @@ div > #instructions {
     color: white;
     font-weight: 800;
     margin: 2px;
-
 }
 
 #d-score {
@@ -143,7 +142,6 @@ div > #instructions {
 #c-score {
     grid-area: win-score;
 }
-
 
 #higher, #lower {
     justify-content: center;   

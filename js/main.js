@@ -83,9 +83,7 @@ document.getElementById('how-to-play').addEventListener('click', howTo);
 
 /*----- functions -----*/
 
-
 start();
-
 
 /* ---- card functions ---- */
 

@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Monoton|Oxygen:300" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src= "bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script defer src="js/main.js"></script>
 </head>
 
@@ -34,12 +36,29 @@
         </div>
         <div id = "playing-deck"></div>
         <footer>please drink responsibly &hearts;</footer>
-        <nav class = >
+        <nav>
                 <button id = "reset">RESET</button>
                 <button id = "how-to-play">INSTRUCTIONS</button>
         </nav>
     </div>
-    
+    <div class="modal" id = "my-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+              <div class="modal-content" >
+                <div class="modal-header">
+                  <h3 class="modal-title">HOW TO 'RIDE THE BUS'</h3>
+                </div>
+                <div class="modal-body">
+                  <p> <br>
+                      1. Guess if the next card is higher or lower than the last card shown.<br>
+                      2. For every WRONG guess, receive a drink penalty and lose all of your winning streak points.<br>
+                      3. Get 7 correct guesses in a row to get off the bus.<br><br>
+                      
+                      Good luck and please drink responsibly &hearts;
+                  </p>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div>
 </body>
 </html>
 

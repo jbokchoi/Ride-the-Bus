@@ -54,6 +54,10 @@ var cards = [
     { card: 'S13', value: 13, img: 'images/spades/spades-K.svg'},
 ];
 
+const winClip = new Audio('sounds/right.wav');
+const drinkClip = new Audio('sounds/wrong.wav');
+const partyClip = new Audio('sounds/party.mp3');
+const winnerClip = new Audio('sounds/win.mp3');
 
 /*----- app's state (variables) -----*/ 
 
@@ -65,16 +69,20 @@ var alertEl = document.getElementById('alert');
 var drinksEl = document.getElementById('d-count');
 var winStreakEl = document.getElementById('c-count');
 
+// var modalEl = document.querySelector(".modal");
+
 /*----- event listeners -----*/ 
 document.getElementById('higher').addEventListener('click', handleHigher);
 document.getElementById('lower').addEventListener('click', handleLower);
 document.getElementById('restart').addEventListener('click', restart);
 document.getElementById('reset').addEventListener('click', restart);
-
+document.getElementById('how-to-play').addEventListener('click', howTo);
 
 /*----- functions -----*/
 
+
 start();
+
 
 /* ---- card functions ---- */
 
@@ -119,12 +127,15 @@ function handleHigher() {
            scores.winStreak++
            winStreakEl.textContent = scores.winStreak;
            winner++
+           winClip.play();
            checkWinner();
         } else {
             alertEl.textContent = 'DRINK!'
             scores.drinks++
             drinksEl.textContent = scores.drinks
+            drinkClip.play();
             resetWinStreak();
+
         }  
    }
 }
@@ -138,10 +149,12 @@ function handleLower() {
             winStreakEl.textContent = scores.winStreak;
             winner++
             checkWinner();
+            winClip.play();
         } else {
             alertEl.textContent = 'DRINK!'
             scores.drinks++
             drinksEl.textContent = scores.drinks
+            drinkClip.play();
             resetWinStreak();
         }
     }
@@ -167,6 +180,7 @@ function flipNextCard() {
 function checkWinner() {
     if (winner === 7) {
         alertEl.textContent = 'WINNER!'
+        winnerClip.play();
         document.getElementById('higher').style.display = "none";
         document.getElementById('lower').style.display = "none";
         document.getElementById('restart').style.display = "block";
@@ -176,6 +190,7 @@ function checkWinner() {
 function gameOver() {
     if (cardCount === 52) {
         alertEl.textContent = `GAMEOVER`
+        partyClip.play();
         document.getElementById('higher').style.display = "none";
         document.getElementById('lower').style.display = "none";
         document.getElementById('restart').style.display = "block";
@@ -241,7 +256,14 @@ function start() {
     },
     winner = 0,
     cardCount = 1,
+    $('#my-modal').modal('show')
     render ();
+}
+
+/* ---- modal functions---- */
+
+function howTo() {
+    $('#my-modal').modal('show')
 }
 
 /* ---- reset functions---- */

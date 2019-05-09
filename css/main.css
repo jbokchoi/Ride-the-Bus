@@ -54,7 +54,7 @@ nav > button {
     justify-content: center;
     font-family: 'Monoton', cursive;
     font-size: 10vmin;
-    letter-spacing: 3px;
+    letter-spacing: 5px;
     color: #fff;
     text-align: center;
     -webkit-animation: glow 1s ease-in-out infinite alternate;
@@ -148,7 +148,7 @@ div > #instructions {
 #higher, #lower {
     justify-content: center;   
     align-self: center; 
-    font-size: 100%;  
+    font-size: 3vmin;  
     background-color: #3e0fe9;
     border-radius: 4px;
     font-family: 'Oxygen', sans-serif !important;
@@ -245,7 +245,7 @@ content: '';
     font-family: 'Oxygen', sans-serif;
     text-align: center;
     color: #fff;
-    font-size: 10px;
+    font-size: 20px;
     padding: 5px;
 }
 

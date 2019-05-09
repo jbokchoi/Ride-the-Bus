@@ -58,6 +58,10 @@ const winClip = new Audio('sounds/right.wav');
 const drinkClip = new Audio('sounds/wrong.wav');
 const partyClip = new Audio('sounds/party.mp3');
 const winnerClip = new Audio('sounds/win.mp3');
+winnerClip.volume = 1.0;
+partyClip.volume = 1.0;
+
+
 
 /*----- app's state (variables) -----*/ 
 
